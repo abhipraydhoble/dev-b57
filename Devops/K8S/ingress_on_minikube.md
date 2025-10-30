@@ -1,3 +1,7 @@
+<img width="892" height="577" alt="image" src="https://github.com/user-attachments/assets/5d33fa66-e987-4acb-91d6-c1be64970f3d" />
+
+
+
 # Enable the Ingress controller
 ````
 minikube addons enable ingress
