@@ -1,3 +1,4 @@
+```hcl
 resource "aws_security_group" "web_sg" {
   name_prefix = "web-sg-"
   description = "Allow inbound HTTP and SSH traffic"
@@ -124,3 +125,21 @@ output "lb_dns_name" {
   description = "Public DNS name of the Load Balancer"
   value       = aws_lb.my_lb.dns_name
 }
+```
+# variable.tf 
+````
+variable "instance_type" {
+  default = "t2.micro"
+
+}
+
+variable "ami_id" {
+  default = "ami-08f52b2e87cebadd9"
+}
+
+
+output "lb_link" {
+    value = aws_lb.my_lb.dns_name
+
+}
+````
