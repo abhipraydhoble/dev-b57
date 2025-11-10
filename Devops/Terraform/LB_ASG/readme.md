@@ -1,8 +1,8 @@
 ```hcl
 resource "aws_security_group" "web_sg" {
-  name_prefix = "web-sg-"
+  name_prefix = "web-sg-demo"
   description = "Allow inbound HTTP and SSH traffic"
-  vpc_id      = "vpc-0b513c39beed873c2"  # change VPC ID
+  vpc_id      = "vpc-016b88b91224f82e0"  # change VPC ID
 
   ingress {
     from_port   = 80
@@ -59,7 +59,7 @@ resource "aws_lb_target_group" "lb_tg" {
   name     = "lb-tg"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = "vpc-0b513c39beed873c2"
+  vpc_id   = "vpc-016b88b91224f82e0"    # change VPC ID
 
   health_check {
     path                = "/"
@@ -78,7 +78,7 @@ resource "aws_lb" "my_lb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.web_sg.id]
-  subnets            = ["subnet-05bda144578ea9914", "subnet-0b6e1ae4003ff61b3"]
+  subnets            = ["subnet-0a5520d3a3afb80fd", "subnet-001fc7152809c964a"]    # change subnet id
 
   tags = {
     app = "my-lb"
@@ -104,7 +104,7 @@ resource "aws_autoscaling_group" "example_asg" {
     version = "$Latest"
   }
 
-  vpc_zone_identifier = ["subnet-05bda144578ea9914", "subnet-0b6e1ae4003ff61b3"]
+  vpc_zone_identifier =   ["subnet-0a5520d3a3afb80fd", "subnet-001fc7152809c964a"] # change subnet id
   min_size            = 1
   max_size            = 3
   desired_capacity    = 2
@@ -125,6 +125,9 @@ output "lb_dns_name" {
   description = "Public DNS name of the Load Balancer"
   value       = aws_lb.my_lb.dns_name
 }
+
+
+
 ```
 # variable.tf 
 ````
@@ -138,8 +141,4 @@ variable "ami_id" {
 }
 
 
-output "lb_link" {
-    value = aws_lb.my_lb.dns_name
-
-}
 ````
