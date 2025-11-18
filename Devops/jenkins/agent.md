@@ -38,3 +38,40 @@
 
 **Check Output**
 ![image](https://github.com/user-attachments/assets/0bf8f6f3-7ad6-45c5-8124-fe1384211e7a)
+---
+
+
+
+
+Jenkins Master:(client)
+ - install jenkins(fakt ithe)
+ - generate key pair
+#ssh-keygen
+# cd .ssh
+#ls
+ - id_rsa(private-key)   -> client/user
+ - id_rsa.pub(public-key) -> Server
+ - copy public key and paste to agent .ssh/authorized_key
+# go to manage jenkins->credentals-> global 
+ - kind: ssh username with private_key
+ - username
+ - private-key
+ - id and des = agent-creds
+
+# goto manage jenkins -> nodes->
+ - name: node-01
+ - remote dir path: /home/ubuntu/pankaj/
+ - launch method: via ssh
+ - host ip: agent public ip
+ - select creds
+ - host key verification: non verification strategy
+ 
+---
+
+Jenkins Worker(Agent):(server)
+# sudo vim .ssh/authorized_key
+   paste public_key
+
+# mkdir pankaj
+# sudo chmod 777 pankaj
+# java install
