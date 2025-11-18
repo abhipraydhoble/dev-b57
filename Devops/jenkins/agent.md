@@ -43,22 +43,22 @@
 
 
 
-Jenkins Master:(client)
+# Jenkins Master:(client)
  - install jenkins(fakt ithe)
  - generate key pair
-#ssh-keygen
-# cd .ssh
-#ls
+#### ssh-keygen
+#### cd .ssh
+#### ls
  - id_rsa(private-key)   -> client/user
  - id_rsa.pub(public-key) -> Server
  - copy public key and paste to agent .ssh/authorized_key
-# go to manage jenkins->credentals-> global 
+## go to manage jenkins->credentals-> global 
  - kind: ssh username with private_key
  - username
  - private-key
  - id and des = agent-creds
 
-# goto manage jenkins -> nodes->
+## goto manage jenkins -> nodes->
  - name: node-01
  - remote dir path: /home/ubuntu/pankaj/
  - launch method: via ssh
@@ -68,10 +68,10 @@ Jenkins Master:(client)
  
 ---
 
-Jenkins Worker(Agent):(server)
-# sudo vim .ssh/authorized_key
+# Jenkins Worker(Agent):(server)
+#### sudo vim .ssh/authorized_key
    paste public_key
 
-# mkdir pankaj
-# sudo chmod 777 pankaj
-# java install
+#### mkdir pankaj
+#### sudo chmod 777 pankaj
+#### java install
